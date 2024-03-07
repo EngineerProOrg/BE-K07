@@ -2,6 +2,7 @@ package web_app
 
 import (
 	"fmt"
+	"log"
 	"net/http/pprof"
 
 	"github.com/gin-gonic/gin"
@@ -37,6 +38,7 @@ func (c *HttpServer) Serve() error {
 	initPrometheus(r)
 
 	address := fmt.Sprintf(":%d", c.Port) // :port
+	log.Println("")
 	if err := r.Run(address); err != nil {
 		return fmt.Errorf("failed to run http server on %s: %s", address, err)
 	}
